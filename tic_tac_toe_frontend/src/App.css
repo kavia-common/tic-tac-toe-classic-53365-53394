@@ -1,20 +1,25 @@
 /* CSS Variables for Theme Management */
 :root {
-  /* Light theme colors */
-  --bg-primary: #ffffff;
-  --bg-secondary: #f8f9fa;
-  --text-primary: #282c34;
-  --text-secondary: #61dafb;
-  --border-color: #e9ecef;
-  --button-bg: #007bff;
-  --button-text: #ffffff;
+  /* Soft Candy Theme Pastel Colors */
+  --bg-primary: #fff8fa;
+  --bg-secondary: #f3edff;
+  --text-primary: #453347;
+  --text-secondary: #ab70bb;
+  --border-color: #f2d2e9;
+  --button-bg: #ffb5d2;
+  --button-text: #fff;
 
-  /* Tic Tac Toe Theme (Overrides & accent, primary, secondary, etc) */
-  --ttt-primary: #1976d2;     /* blue */
-  --ttt-secondary: #424242;   /* gray */
-  --ttt-accent: #ff5252;      /* red */
-  --ttt-bg: #f7f7fa;          /* soft background */
-  --ttt-board-bg: #fff;
+  /* Soft Candy Tic Tac Toe Theme */
+  --ttt-primary: #a0c3ff;      /* pastel blue */
+  --ttt-secondary: #e080a4;    /* playful pink */
+  --ttt-accent: #f7e47e;       /* butter yellow */
+  --ttt-bg: #fff3fc;           /* background: very soft pink */
+  --ttt-board-bg: #e3f9f6;     /* board: minty */
+  --ttt-square-bg: #fff6db;    /* squares: pastel cream */
+  --ttt-square-hover: #cee1fb; /* hover: blue pop */
+  --ttt-shadow: 0 6px 24px rgba(172,156,255,0.18), 0 2.5px 9px rgba(239,159,222,0.10);
+  --ttt-radius: 22px;
+  --ttt-font: 'Quicksand', 'Comic Sans MS', 'Segoe UI', sans-serif;
 }
 
 [data-theme="dark"] {
@@ -39,7 +44,8 @@
   background-color: var(--bg-primary);
   color: var(--text-primary);
   min-height: 100vh;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  font-family: var(--ttt-font), sans-serif;
+  transition: background-color 0.5s cubic-bezier(.8,.3,.3,1.4), color 0.5s;
 }
 
 .App-logo {
@@ -75,26 +81,33 @@
   position: absolute;
   top: 20px;
   right: 20px;
-  background-color: var(--button-bg);
-  color: var(--button-text);
+  background: linear-gradient(90deg, #ffd6ec 4%, #cde7f0 96%);
+  color: #ab70bb;
   border: none;
-  border-radius: 8px;
-  padding: 10px 20px;
-  font-size: 14px;
-  font-weight: 600;
+  border-radius: 20px;
+  padding: 12px 28px 12px 22px;
+  font-size: 16px;
+  font-weight: 700;
+  box-shadow: 0 3px 10px 0 rgba(160,195,255,0.15),0 1.5px 5px rgba(255,181,210,0.15);
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.25s cubic-bezier(.65,-0.18,.63,1.29);
+  letter-spacing: 0.04em;
+  font-family: var(--ttt-font), sans-serif;
 }
 
-.theme-toggle:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  opacity: 0.9;
+.theme-toggle:hover,
+.theme-toggle:focus {
+  background: linear-gradient(90deg, #e3f9f6 10%, #ffd6ec 90%);
+  color: #e080a4;
+  transform: translateY(-2.5px) scale(1.025);
+  opacity: 0.92;
+  box-shadow: 0 7px 20px 0 rgba(239,159,222,0.18);
+  outline: 1.5px solid var(--ttt-secondary);
 }
 
 .theme-toggle:active {
-  transform: translateY(0);
+  transform: translateY(0) scale(.99);
+  opacity: 0.96;
 }
 
 @keyframes App-logo-spin {
@@ -119,10 +132,11 @@
 /* ---- TIC TAC TOE STYLES ---- */
 .ttt-outer {
   min-height: 100vh;
-  background-color: var(--ttt-bg);
+  background: linear-gradient(120deg, #fffafc 35%, #d9f5f0 100%);
   display: flex;
   flex-direction: column;
   justify-content: center;
+  font-family: var(--ttt-font), sans-serif;
 }
 
 .ttt-header {
@@ -132,136 +146,165 @@
   align-items: center;
   justify-content: center;
   background: transparent;
-  padding-top: 0;
-  padding-bottom: 0;
+  padding: 0;
 }
 
 .ttt-container-outer {
-  background-color: var(--ttt-board-bg);
-  border-radius: 18px;
-  box-shadow: 0 4px 32px rgba(0,0,0,0.08), 0 1.5px 3px rgba(100,150,200,0.04);
-  padding: 32px 32px 24px 32px;
-  max-width: 340px;
-  width: 95vw;
+  background: linear-gradient(110deg, #ecebff 40%, #ffe6fa 95%);
+  border-radius: var(--ttt-radius);
+  box-shadow: var(--ttt-shadow);
+  padding: 38px 26px 28px 26px;
+  max-width: 360px;
+  width: 96vw;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 24px 0;
+  margin: 26px 0;
+  border: 1.3px solid #fdeaf9;
 }
 
 .ttt-title {
   margin-bottom: 8px;
-  font-size: 2rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  color: var(--ttt-primary);
+  font-size: 2.25rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #de4396;
+  text-shadow: 1.5px 2px 0 #fff8fa, 0 5px 14px #fecfee4d;
+  font-family: var(--ttt-font), cursive, sans-serif;
   text-align: center;
 }
 
 .ttt-status {
-  font-size: 1.15rem;
-  font-weight: 500;
-  margin-bottom: 18px;
-  color: var(--ttt-secondary);
+  font-size: 1.10rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #937be3;
   min-height: 1.6em;
   text-align: center;
+  letter-spacing: 0.015em;
+  background: #ffeafd90;
+  border-radius: 14px;
+  box-shadow: 0 1.5px 7px #fee4fa33;
+  padding: 7px 0 6px 0;
+  margin-top: 2px;
 }
 
 .ttt-board {
   display: grid;
-  grid-template-columns: repeat(3, 64px);
-  grid-template-rows: repeat(3, 64px);
-  gap: 8px;
+  grid-template-columns: repeat(3, 68px);
+  grid-template-rows: repeat(3, 68px);
+  gap: 12px;
   background: none;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
+  border-radius: 20px;
+  box-shadow: 0 3.5px 20px #de439613, 0 0.5px 4px #f7e47e15;
+  padding: 6px 0 6px 0;
+  align-self: center;
 }
 
 .ttt-square {
-  width: 64px;
-  height: 64px;
-  border-radius: 12px;
-  background-color: var(--ttt-bg);
-  border: 2px solid var(--ttt-primary);
-  color: var(--ttt-primary);
-  font-size: 2.3rem;
-  font-weight: 700;
+  width: 68px;
+  height: 68px;
+  border-radius: 32px;
+  background: var(--ttt-square-bg);
+  border: 2.2px solid #ffe6fa;
+  color: #ab70bb;
+  font-size: 2.65rem;
+  font-weight: 800;
   outline: none;
-  box-shadow: 0 1.5px 4px rgba(0,0,0,0.08);
+  box-shadow: 0 5px 16px #c3e9f66a, 0 .5px 3.8px #db90a913;
   cursor: pointer;
-  transition: background 0.2s, color 0.2s, border-color 0.18s;
+  transition: 
+    background 0.19s, 
+    color 0.19s, 
+    border-color 0.18s, 
+    box-shadow 0.18s;
   display: flex;
   align-items: center;
   justify-content: center;
   user-select: none;
-  will-change: background, color;
+  will-change: background, color, border;
+  font-family: var(--ttt-font), cursive, sans-serif;
 }
-.ttt-square:enabled:hover {
-  border-color: var(--ttt-accent);
-  color: var(--ttt-accent);
-  background: #fff3f3;
+.ttt-square:enabled:hover,
+.ttt-square:enabled:focus {
+  border-color: #f7e47e;
+  color: #de4396;
+  background: var(--ttt-square-hover);
+  box-shadow: 0 7px 30px #ffd6ec44;
+  outline: 1.5px solid #e080a499;
 }
 .ttt-square:disabled {
   cursor: default;
-  opacity: 0.7;
+  opacity: 0.54;
+  box-shadow: 0 2px 7px #e3f9f689;
 }
 
 .ttt-restart {
-  margin-top: 10px;
-  width: 100%;
-  padding: 0.68em 0;
-  font-size: 1.08em;
-  font-weight: 500;
-  background-image: linear-gradient(
-    to right,
-    var(--ttt-primary) 0%,
-    var(--ttt-secondary) 100%
-  );
+  margin-top: 13px;
+  width: 96%;
+  padding: 0.73em 0;
+  font-size: 1.13em;
+  font-weight: 700;
+  background: linear-gradient(98deg, #ffb5d2 14%, #a0c3ff 86%);
   color: #fff;
   border: none;
-  border-radius: 8px;
+  border-radius: 18px;
   cursor: pointer;
-  letter-spacing: 0.02em;
-  box-shadow: 0 2px 8px rgba(50,60,130,0.05);
-  transition: background 0.22s, opacity 0.12s;
+  letter-spacing: 0.046em;
+  box-shadow: 0 7px 22px #ffd6ec53, 0 1.5px 3.5px #a0c3ff33;
+  transition: 
+    background 0.20s,
+    opacity 0.16s,
+    color 0.19s;
+  font-family: var(--ttt-font), cursive, sans-serif;
+  outline: none;
 }
 .ttt-restart:hover, .ttt-restart:focus {
-  background-image: linear-gradient(
-    to right,
-    var(--ttt-accent) 0%,
-    var(--ttt-primary) 100%
-  );
-  opacity: 0.92;
+  background: linear-gradient(90deg, #f7e47e 2%, #e080a4 98%);
+  color: #de4396;
+  opacity: 0.98;
+  box-shadow: 0 10px 24px #de439618, 0 4px 20px #ffd6ec30;
+  outline: 2.2px solid #ffd6ec;
 }
 
 .ttt-footer {
-  margin-top: 24px;
+  margin-top: 27px;
   font-size: 1rem;
-  font-weight: 400;
-  color: var(--ttt-secondary);
+  font-weight: 700;
+  color: #b395f7;
   text-align: center;
+  letter-spacing: 0.01em;
+  text-shadow: 0 .8px 2.5px #fff9;
+  font-family: var(--ttt-font), cursive, sans-serif;
 }
 
 @media (max-width: 480px) {
   .ttt-board {
-    grid-template-columns: repeat(3, 18vw);
-    grid-template-rows: repeat(3, 18vw);
-    gap: 3vw;
+    grid-template-columns: repeat(3, 23vw);
+    grid-template-rows: repeat(3, 23vw);
+    gap: 4vw;
     min-width: unset;
     min-height: unset;
+    border-radius: 12vw;
+    padding: 2.5vw;
   }
   .ttt-square {
-    width: 18vw;
-    height: 18vw;
-    font-size: 8vw;
-    min-width: 42px;
-    min-height: 42px;
+    width: 23vw;
+    height: 23vw;
+    font-size: 9vw;
+    min-width: 46px;
+    min-height: 46px;
     max-width: 90px;
     max-height: 90px;
+    border-radius: 30vw;
+    box-shadow: 0 4px 16px #ffd6ec33, 0 1px 5px #e080a415;
   }
   .ttt-container-outer {
-    padding: 18px 2vw 12px 2vw;
+    padding: 13px 2vw 12px 2vw;
     min-width: unset;
-    box-shadow: 0 2.5px 7px rgba(0,0,0,0.08);
+    box-shadow: 0 2.5px 11px #ffd6ec29;
+    border-radius: 12vw;
+    max-width: 100vw;
   }
 }
-
