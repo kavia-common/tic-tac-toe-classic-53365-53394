@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 
-// Primary, secondary, and accent color variables for game theme.
-const PRIMARY_COLOR = '#1976d2';
-const SECONDARY_COLOR = '#424242';
-const ACCENT_COLOR = '#ff5252';
+/* Soft Candy theme: no hardcoded color tokens, all colors come from App.css */
 
 // Winner lines to check win conditions
 const WIN_LINES = [
